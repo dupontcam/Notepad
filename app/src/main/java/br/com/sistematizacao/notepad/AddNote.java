@@ -40,7 +40,7 @@ public class AddNote extends AppCompatActivity {
         });
 
         toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.black));
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("New Note");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -79,11 +79,11 @@ public class AddNote extends AppCompatActivity {
 
         if (item.getItemId() == R.id.save) {
             if (noteTitle.getText().toString().isEmpty()) {
-                noteTitle.setError("Title cannot be empty");
+                noteTitle.setError("O título não pode estar vazio.");
                 return false;
             }
             if (noteDetails.getText().toString().isEmpty()) {
-                noteDetails.setError("Description cannot be empty");
+                noteDetails.setError("A descrição não pode estar vazia.");
                 return false;
             }
             note.setTitle(noteTitle.getText().toString());
@@ -92,7 +92,7 @@ public class AddNote extends AppCompatActivity {
             note.setTime(currentTime);
             note = new Note(noteTitle.getText().toString(), noteDetails.getText().toString(), todaysDate, currentTime);
             db.addNote(note);
-            Toast.makeText(this, "Note Saved", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Anotação salva.", Toast.LENGTH_SHORT).show();
             goToMain();
         }
 

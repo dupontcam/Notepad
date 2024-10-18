@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#F7F3F3">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -15,7 +14,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#FFEE96"
             android:padding="5dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,7 +76,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/noteTitle"
-                    app:layout_constraintVertical_bias="0.20999998" />
+                    app:layout_constraintVertical_bias="0.14999998" />
 
                 <TextView
                     android:id="@+id/nTime"
@@ -87,7 +87,7 @@
                     android:textSize="16sp"
                     app:layout_constraintBaseline_toBaselineOf="@+id/nDate"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.02"
+                    app:layout_constraintHorizontal_bias="0.05"
                     app:layout_constraintStart_toEndOf="@+id/nDate" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,7 +42,7 @@ public class UpdateNote extends AppCompatActivity {
         });
 
         toolbar = findViewById(R.id.toolbar2);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.black));
         setSupportActionBar(toolbar);
         String title = getIntent().getStringExtra("noteTitle");
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
@@ -91,20 +91,20 @@ public class UpdateNote extends AppCompatActivity {
 
         if (itemId == R.id.edit) {
             if (editTextTextUp.getText().toString().isEmpty()) {
-                editTextTextUp.setError("Title cannot be empty");
+                editTextTextUp.setError("O título não pode estar vazio.");
                 return false;
             }
             if (editTextTextMultiLineUp.getText().toString().isEmpty()) {
-                editTextTextMultiLineUp.setError("Description cannot be empty");
+                editTextTextMultiLineUp.setError("A descrição não pode estar vazia.");
                 return false;
             }
             editTextTextUp.setEnabled(true);
             editTextTextMultiLineUp.setEnabled(true);
 
             new AlertDialog.Builder(this)
-                    .setTitle("Confirm Update")
-                    .setMessage("Are you sure you want to update this note?")
-                    .setPositiveButton("Yes", (dialog, which) -> {
+                    .setTitle("Confirmação da atualização")
+                    .setMessage("Tem certeza de que deseja atualizar esta anotação?")
+                    .setPositiveButton("Sim", (dialog, which) -> {
 
                         long noteId = getIntent().getLongExtra("noteId", -1L);
 
@@ -116,9 +116,9 @@ public class UpdateNote extends AppCompatActivity {
                         note.setTime(currentTime);
                         db.updateNote(note);
                         goToMain();
-                        Toast.makeText(this, "Note Updated", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Anotação atualizada", Toast.LENGTH_SHORT).show();
                     })
-                    .setNegativeButton("No", (dialog, which) -> {
+                    .setNegativeButton("Não", (dialog, which) -> {
                         goToMain(); // Chamar goToMain() aqui
                     }).show();
 
@@ -127,18 +127,18 @@ public class UpdateNote extends AppCompatActivity {
         } else if (itemId == R.id.delete) {
 
             new AlertDialog.Builder(this)
-                    .setTitle("Confirm Delete")
-                    .setMessage("Are you sure you want to delete this note?")
-                    .setPositiveButton("Yes", (dialog, which) -> {
+                    .setTitle("Confirmação da Exclusão")
+                    .setMessage("Tem certeza de que deseja excluir esta anotação?")
+                    .setPositiveButton("Sim", (dialog, which) -> {
 
                         long position = getIntent().getLongExtra("noteId", -1L);
                         Note note = new Note();
                         note.setID(position);
                         db.deleteNote(position); // Certifique-se de ter a posição correta
                         goToMain();
-                        Toast.makeText(this, "Note Deleted", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Anotação excluída", Toast.LENGTH_SHORT).show();
                     })
-                    .setNegativeButton("No", (dialog, which) -> {
+                    .setNegativeButton("Não", (dialog, which) -> {
                         goToMain(); // Chamar goToMain() aqui
                     }).show();
 

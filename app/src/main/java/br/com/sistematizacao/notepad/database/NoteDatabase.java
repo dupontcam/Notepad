@@ -34,7 +34,7 @@ public class NoteDatabase extends SQLiteOpenHelper {
 
         // create table nametable(ID INT PRIMARY KEY, title TEXT, content TEXT, date TEXT, time TEXT);
         String query = "CREATE TABLE " + DATABASE_TABLE + " (" +
-                KEY_ID + " LONG PRIMARY KEY AUTOINCREMENT, "+
+                KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+
                 KEY_TITLE + " TEXT, " +
                 KEY_CONTENT + " TEXT, " +
                 KEY_DATE + " TEXT, " +
@@ -101,7 +101,7 @@ public class NoteDatabase extends SQLiteOpenHelper {
         db.update(DATABASE_TABLE, values, KEY_ID + " = ?", new String[]{String.valueOf(note.getID())});
     }
 
-    public void deleteNote(Long id) {
+    public void deleteNote(long id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(DATABASE_TABLE, KEY_ID + " = ?", new String[]{String.valueOf(id)});
         db.close();
